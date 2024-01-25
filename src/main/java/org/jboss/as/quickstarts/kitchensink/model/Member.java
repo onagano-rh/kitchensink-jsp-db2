@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.as.quickstarts.kitchensinkjsp.model;
+package org.jboss.as.quickstarts.kitchensink.model;
 
 import java.io.Serializable;
 
@@ -33,12 +33,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+@SuppressWarnings("serial")
 @Entity
 @XmlRootElement
-@Table(name = "MemberJSP", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Member implements Serializable {
-    /** Default value included to remove warning. Remove or modify at will. **/
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
@@ -90,10 +89,5 @@ public class Member implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String toString() {
-        return getName() + ":" + getEmail() + ":" + getPhoneNumber();
-
     }
 }
